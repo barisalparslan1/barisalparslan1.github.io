@@ -94,10 +94,12 @@
             border-radius: 50%;
             border: 3px solid #30363d;
             object-fit: cover;
+            image-rendering: auto;
             image-rendering: -webkit-optimize-contrast;
-            image-rendering: crisp-edges;
-            backface-visibility: hidden;
-            transform: translateZ(0);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            filter: blur(0);
+            will-change: transform;
         }
 
         .bio-text {
@@ -198,7 +200,7 @@
         <div id="bio" class="tab-content active">
             <div class="bio-section">
                 <div class="profile-image">
-                    <img src="profile.png" alt="Profile Picture">
+                    <img src="https://via.placeholder.com/250" alt="Profile Picture">
                 </div>
                 <div class="bio-text">
                     <h1>Your Name</h1>
