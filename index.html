@@ -238,6 +238,7 @@
                     <span class="tag">Machine learning</span>
                     <span class="tag">Linear models</span>
                 </div>
+                <a href="https://proceedings.mlr.press/v202/alparslan23a.html" class="project-link" target="_blank">Read Paper from Proceedings of ML Research →</a>
             </div>
 
             <div class="research-item">
@@ -252,6 +253,7 @@
                     <span class="tag">Bayesian inference</span>
                     <span class="tag">Statistic selection</span>
                 </div>
+                <a href="https://link.springer.com/article/10.1007/s11222-022-10129-8" class="project-link" target="_blank">Read Paper from Springer Nature Link→</a>
             </div>
 
             <div class="research-item">
@@ -318,6 +320,22 @@
                 document.getElementById(tabName).classList.add('active');
             });
         });
+        // Handle URL hash on page load and hash change
+        function handleHash() {
+            const hash = window.location.hash.substring(1);
+            if (hash && (hash === 'bio' || hash === 'research' || hash === 'projects')) {
+                switchTab(hash);
+            } else if (hash && hash.startsWith('project')) {
+                // If linking to a specific project, switch to projects tab first
+                switchTab('projects');
+                setTimeout(() => {
+                    document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+
+        window.addEventListener('hashchange', handleHash);
+        window.addEventListener('load', handleHash);
     </script>
 </body>
 </html>
