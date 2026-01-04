@@ -263,6 +263,7 @@
                 <div class="tags">
                     <span class="tag">Master thesis</span>
                 </div>
+                <a href="https://research.sabanciuniv.edu/id/eprint/48882/1/10497506.pdf" class="project-link" target="_blank">Read Paper from Sabanci University→</a>
             </div>
         </div>
 
@@ -308,11 +309,22 @@
     <script>
         const tabBtns = document.querySelectorAll('.tab-btn');
         const tabContents = document.querySelectorAll('.tab-content');
-
+        function switchTab(tabName) {
+            tabBtns.forEach(b => b.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            const targetBtn = document.querySelector(`[data-tab="${tabName}"]`);
+            const targetContent = document.getElementById(tabName);
+            
+            if (targetBtn && targetContent) {
+                targetBtn.classList.add('active');
+                targetContent.classList.add('active');
+            }
+        }
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const tabName = btn.getAttribute('data-tab');
-                
+                switchTab(tabName);
                 tabBtns.forEach(b => b.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
@@ -320,7 +332,7 @@
                 document.getElementById(tabName).classList.add('active');
             });
         });
-        // Handle URL hash on page load and hash change
+
         function handleHash() {
             const hash = window.location.hash.substring(1);
             if (hash && (hash === 'bio' || hash === 'research' || hash === 'projects')) {
